@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="categoryMapper" class="org.easymock.EasyMock" factory-method="createMock">
+        <constructor-arg value="com.moviemarket.dao.CategoryMapper"/>
+    </bean>
+
+    <bean id="categoryService" class="com.moviemarket.service.CategoryServiceImpl">
+        <property name="categoryMapper" ref="categoryMapper"/>
+    </bean>
+
+    <bean id="movieMapper" class="org.easymock.EasyMock" factory-method="createMock">
+        <constructor-arg value="com.moviemarket.dao.MovieMapper"/>
+    </bean>
+
+    <bean id="movieService" class="com.moviemarket.service.MovieServiceImpl">
+        <property name="movieMapper" ref="movieMapper"/>
+    </bean>
+
+    <bean id="couponMapper" class="org.easymock.EasyMock" factory-method="createMock">
+        <constructor-arg value="com.moviemarket.dao.CouponMapper"/>
+    </bean>
+
+    <bean id="couponService" class="com.moviemarket.service.CouponServiceImpl">
+        <property name="couponMapper" ref="couponMapper"/>
+    </bean>
+
+</beans>

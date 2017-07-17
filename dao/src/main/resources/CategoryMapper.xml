@@ -1,0 +1,47 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.moviemarket.dao.CategoryMapper">
+
+    <resultMap id="categoryResultMap" type="com.moviemarket.model.CategoryDTO">
+        <id property="categoryId" column="category_id" />
+        <result property="title" column="title" />
+        <result property="amount" column="amount_of_movies" />
+    </resultMap>
+
+
+    <select id="getAllCategories" resultMap="categoryResultMap">
+        SELECT category.category_id, category.title,
+        COUNT(movie.category_id) AS amount_of_movies
+        FROM (category LEFT JOIN movie ON category.category_id = movie.category_id)
+        GROUP BY category.category_id
+    </select>
+
+    <select id="getCategoryById" parameterType="java.lang.Integer" resultMap="categoryResultMap">
+        SELECT category.category_id, category.title,
+        COUNT(movie.category_id) AS amount_of_movies
+        FROM (category LEFT JOIN movie ON category.category_id = movie.category_id)
+        WHERE category.category_id = #{categoryId}
+    </select>
+
+    <select id="getCategoryByTitle" parameterType="java.lang.String" resultMap="categoryResultMap">
+        SELECT category.category_id, category.title,
+        COUNT(movie.category_id) AS amount_of_movies
+        FROM (category LEFT JOIN movie ON category.category_id = movie.category_id)
+        WHERE lower(category.title) = lower(#{title})
+    </select>
+
+    <select id="addCategory" parameterType="com.moviemarket.model.Category">
+        INSERT INTO category (category_id, title)
+        VALUES (#{categoryId}, #{title})
+    </select>
+
+    <select id="updateCategory" parameterType="com.moviemarket.model.Category">
+        UPDATE category SET title = #{title} WHERE category_id = #{categoryId}
+    </select>
+
+    <select id="deleteCategory" parameterType="java.lang.Integer">
+        DELETE FROM category WHERE category_id = #{categoryId}
+    </select>
+
+</mapper>

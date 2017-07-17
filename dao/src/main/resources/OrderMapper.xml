@@ -1,0 +1,51 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.moviemarket.dao.OrderMapper">
+
+    <resultMap id="orderResultMap" type="com.moviemarket.model.OrderDTO">
+        <id property="orderId" column="order_id" />
+        <result property="clientId" column="client_id" />
+        <result property="movieId" column="movie_id" />
+        <result property="categoryId" column="category_id" />
+        <result property="orderDate" column="order_date" />
+        <result property="movieTitle" column="movie_title" />
+        <result property="categoryTitle" column="category_title" />
+        <result property="releaseDate" column="release_date" />
+        <result property="rating" column="rating" />
+        <result property="price" column="price" />
+    </resultMap>
+
+
+    <select id="getAllOrdersByClientId" parameterType="java.lang.Integer" resultMap="orderResultMap">
+        SELECT shopping_cart.order_id AS order_id,
+        shopping_cart.client_id AS client_id,
+        shopping_cart.movie_id AS movie_id,
+        movie.category_id AS category_id,
+        shopping_cart.order_date AS order_date,
+        movie.title AS movie_title,
+        category.title AS category_title,
+        movie.release_date AS release_date,
+        movie.rating AS rating,
+        movie.price * (1 -
+            NVL((SELECT coupon.discount
+            FROM coupon LEFT JOIN client_coupon
+                ON client_coupon.coupon_id = coupon.coupon_id
+                WHERE client_coupon.client_id = #{clientId}), 1) / 100) AS price
+        FROM shopping_cart
+        LEFT JOIN movie ON shopping_cart.movie_id = movie.movie_id
+        LEFT JOIN category ON movie.category_id = category.category_id
+        WHERE shopping_cart.client_id = #{clientId}
+        GROUP BY shopping_cart.order_id
+    </select>
+
+    <select id="addOrder" parameterType="com.moviemarket.model.Order">
+        INSERT INTO shopping_cart (order_id, client_id, movie_id, order_date)
+        VALUES (#{orderId}, #{clientId}, #{movieId}, #{orderDate})
+    </select>
+
+    <select id="deleteOrder" parameterType="java.lang.Integer">
+        DELETE FROM shopping_cart WHERE order_id = #{orderId}
+    </select>
+
+</mapper>

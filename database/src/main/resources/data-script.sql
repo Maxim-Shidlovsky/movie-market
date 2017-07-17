@@ -25,11 +25,29 @@ VALUES
 (14, 'The Impossible', '2012-10-11', 8, 3, 5);
 
 
-INSERT INTO coupon (coupon_id, code, discount)
+INSERT INTO coupon (coupon_id, code, discount, receiving_date)
 VALUES
-(1, '123', 20);
+(1, '123', 20, '2017-01-01'),
+(2, '111', 10, '2016-01-01'),
+(3, '333', 15, '2015-01-01');
 
 
 INSERT INTO client (client_id, login, password)
 VALUES
-(1, 'user', '111');
+(1, 'admin', '111'),
+(2, 'user2', '111'),
+(3, 'user3', '111');
+
+
+INSERT INTO shopping_cart (order_id, client_id, movie_id, order_date)
+VALUES
+(1, 2, 1, '2017-01-01'),
+(2, 2, 2, '2017-01-01'),
+(3, 3, 10, '2017-01-01'),
+(4, 3, 11, '2017-01-01'),
+(5, 3, 12, '2017-01-01');
+
+
+INSERT INTO client_coupon (id, client_id, coupon_id)
+VALUES
+(1, 3, 1);

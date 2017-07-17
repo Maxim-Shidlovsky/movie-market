@@ -1,0 +1,44 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.moviemarket.dao.MovieDTOMapper">
+
+    <select id="getAllMovies">
+        SELECT movie.*, category.title AS title \
+        FROM (movie LEFT JOIN category ON movie.category_id = category.category_id) \
+        GROUP BY movie.movie_id
+    </select>
+
+    <select id="getMovieById" parameterType="java.lang.Integer">
+        SELECT movie.*, category.title \
+        FROM (movie LEFT JOIN category ON movie.category_id = category.category_id) \
+        WHERE movie_id = #{movie_id}
+    </select>
+
+    <select id="getMovieByTitle" parameterType="java.lang.String">
+        SELECT movie.*, category.title \
+        FROM (movie LEFT JOIN category ON movie.category_id = category.category_id) \
+        WHERE lower(title) = lower(#{title})
+    </select>
+
+    <select id="getMoviesByCategoryId" parameterType="java.lang.Integer">
+        SELECT movie.*, category.title \
+        FROM (movie LEFT JOIN category ON movie.category_id = category.category_id) \
+        WHERE movie.category_id = #{category_id}
+    </select>
+
+    <select id="addMovie" parameterType="com.moviemarket.model.Movie">
+        INSERT INTO movie (movie_id, title, release_date, rating, price, category_id) \
+        VALUES (#{movie_id}, #{title}, #{release_date}, #{rating}, #{price}, #{category_id})
+    </select>
+
+    <select id="updateMovie" parameterType="com.moviemarket.model.Movie">
+        UPDATE movie SET title = #{title}, release_date = #{release_date}, rating = #{rating}, \
+        price = #{price}, category_id = #{category_id} WHERE car_id = #{car_id}
+    </select>
+
+    <select id="deleteMovie" parameterType="java.lang.Integer">
+        DELETE FROM movie WHERE movie_id = #{movie_id}
+    </select>
+
+</mapper>

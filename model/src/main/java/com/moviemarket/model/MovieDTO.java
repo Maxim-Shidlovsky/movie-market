@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * Created by andr_srv on 09.07.2017.
+ * Created by Maxim on 09.07.2017.
  */
 public class MovieDTO {
 
@@ -12,13 +12,13 @@ public class MovieDTO {
     private String title;
     private Date releaseDate;
     private Integer rating;
-    private Integer price;
+    private Double price;
     private Integer categoryId;
     private String categoryTitle;
 
     public MovieDTO() { }
 
-    public MovieDTO(Integer movieId, String title, Date releaseDate, Integer rating, Integer price,
+    public MovieDTO(Integer movieId, String title, Date releaseDate, Integer rating, Double price,
                     Integer categoryId, String categoryTitle) {
         this.movieId = movieId;
         this.title = title;
@@ -61,11 +61,11 @@ public class MovieDTO {
         this.rating = rating;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

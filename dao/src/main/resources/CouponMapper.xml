@@ -1,0 +1,40 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.moviemarket.dao.CouponMapper">
+
+    <resultMap id="couponResultMap" type="com.moviemarket.model.Coupon">
+        <id property="couponId" column="coupon_id" />
+        <result property="code" column="code" />
+        <result property="discount" column="discount" />
+        <result property="receivingDate" column="receiving_date" />
+    </resultMap>
+
+
+    <select id="getAllCoupons" resultMap="couponResultMap">
+        SELECT * FROM coupon
+    </select>
+
+    <select id="getCouponById" parameterType="java.lang.Integer" resultMap="couponResultMap">
+        SELECT * FROM coupon WHERE coupon_id = #{couponId}
+    </select>
+
+    <select id="getCouponByCode" parameterType="java.lang.String" resultMap="couponResultMap">
+        SELECT * FROM coupon WHERE code = #{code}
+    </select>
+
+    <select id="addCoupon" parameterType="com.moviemarket.model.Coupon">
+        INSERT INTO coupon (coupon_id, code, discount, receiving_date)
+        VALUES (#{couponId}, #{code}, #{discount}, #{receivingDate})
+    </select>
+
+    <select id="updateCoupon" parameterType="com.moviemarket.model.Coupon">
+        UPDATE coupon SET code = #{code}, discount = #{discount}, receiving_date = #{receivingDate}
+        WHERE coupon_id = #{couponId}
+    </select>
+
+    <select id="deleteCoupon" parameterType="java.lang.Integer">
+        DELETE FROM coupon WHERE coupon_id = #{couponId}
+    </select>
+
+</mapper>

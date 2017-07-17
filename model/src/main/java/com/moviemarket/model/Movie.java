@@ -12,12 +12,12 @@ public class Movie {
     private String title;
     private Date releaseDate;
     private Integer rating;
-    private Integer price;
+    private Double price;
     private Integer categoryId;
 
     public Movie() { }
 
-    public Movie(Integer movieId, String title, Date releaseDate, Integer rating, Integer price, Integer categoryId) {
+    public Movie(Integer movieId, String title, Date releaseDate, Integer rating, Double price, Integer categoryId) {
         this.movieId = movieId;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -58,11 +58,11 @@ public class Movie {
         this.rating = rating;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

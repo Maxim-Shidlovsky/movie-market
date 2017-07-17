@@ -3,7 +3,7 @@ package com.moviemarket.model;
 import java.util.Objects;
 
 /**
- * Created by andr_srv on 09.07.2017.
+ * Created by Maxim on 09.07.2017.
  */
 public class CategoryDTO {
 
