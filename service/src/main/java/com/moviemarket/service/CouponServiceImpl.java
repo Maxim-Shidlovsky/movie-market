@@ -27,13 +27,13 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public List<Coupon> getAllCoupons() throws DataAccessException {
-        LOGGER.debug("getAllCouponsTest()");
+        LOGGER.debug("getAllCoupons()");
         return couponMapper.getAllCoupons();
     }
 
     @Override
     public Coupon getCouponById(Integer couponId) throws DataAccessException {
-        LOGGER.debug("getCouponByIdTest({})", couponId);
+        LOGGER.debug("getCouponById({})", couponId);
         Assert.notNull(couponId, "Coupon's ID mustn't be null.");
 
         return couponMapper.getCouponById(couponId);
@@ -41,7 +41,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public Coupon getCouponByCode(String code) throws DataAccessException {
-        LOGGER.debug("getCouponByCodeTest({})", code);
+        LOGGER.debug("getCouponByCode({})", code);
         Assert.notNull(code, "Coupon's code mustn't be null.");
         Assert.hasText(code, "Coupon's code must have text.");
 
@@ -50,7 +50,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public Integer addCoupon(Coupon coupon) throws DataAccessException {
-        LOGGER.debug("addCouponTest({})", coupon);
+        LOGGER.debug("addCoupon({})", coupon);
         Assert.notNull(coupon, "Coupon mustn't be null.");
         Assert.isNull(coupon.getCouponId(), "Coupon's ID must be null.");
         Assert.notNull(coupon.getCode(), "Coupon's code mustn't be null.");
@@ -63,7 +63,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public Integer updateCoupon(Coupon coupon) throws DataAccessException {
-        LOGGER.debug("updateCouponTest({})", coupon);
+        LOGGER.debug("updateCoupon({})", coupon);
         Assert.notNull(coupon, "Coupon mustn't be null.");
         Assert.notNull(coupon.getCouponId(), "Coupon's ID mustn't be null.");
         Assert.notNull(coupon.getCode(), "Coupon's code mustn't be null.");
@@ -76,7 +76,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public Integer deleteCoupon(Integer couponId) throws DataAccessException {
-        LOGGER.debug("deleteCouponTest({})", couponId);
+        LOGGER.debug("deleteCoupon({})", couponId);
         Assert.notNull(couponId, "Coupon's ID mustn't be null.");
 
         return couponMapper.deleteCoupon(couponId);

@@ -6,23 +6,28 @@ import com.moviemarket.service.MovieService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Maxim on 13.7.17.
  */
 
-@CrossOrigin
-@RestController
+@Controller
 public class MovieRestController {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Autowired
     private MovieService movieService;
+
 
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     @ExceptionHandler({IllegalArgumentException.class})
@@ -32,47 +37,73 @@ public class MovieRestController {
 
 
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
-    public @ResponseBody List<MovieDTO> getAllMovies() {
+    public String getAllMovies(Model model) {
         LOGGER.debug("getAllMovies()");
-        return movieService.getAllMovies();
+        List<MovieDTO> movieList = movieService.getAllMovies();
+        model.addAttribute(movieList);
+        return "movies";
     }
 
     @RequestMapping(value = "/movie/{id}", method = RequestMethod.GET)
-    public @ResponseBody MovieDTO getMovieById(@PathVariable(value = "id") Integer movieId) {
+    public String getMovieById(@PathVariable(value = "id") Integer movieId, Model model) {
         LOGGER.debug("getMovieById({})", movieId);
-        return movieService.getMovieById(movieId);
+        List<MovieDTO> movieList = new ArrayList<MovieDTO>();
+        movieList.add(movieService.getMovieById(movieId));
+        model.addAttribute(movieList);
+        return "movies";
     }
 
     @RequestMapping(value = "/movie/title/{title}", method = RequestMethod.GET)
-    public @ResponseBody MovieDTO getMovieByTitle(@PathVariable(value = "title") String title) {
+    public String getMovieByTitle(@PathVariable(value = "title") String title, Model model) {
         LOGGER.debug("getMovieByTitle({})", title);
-        return movieService.getMovieByTitle(title);
+        List<MovieDTO> movieList = new ArrayList<MovieDTO>();
+        movieList.add(movieService.getMovieByTitle(title));
+        model.addAttribute(movieList);
+        return "movies";
     }
 
     @RequestMapping(value = "/category/{id}/movies", method = RequestMethod.GET)
-    public @ResponseBody List<MovieDTO> getMoviesByCategoryId(@PathVariable(value = "id") Integer categoryId) {
+    public String getMoviesByCategoryId(@PathVariable(value = "id") Integer categoryId, Model model) {
         LOGGER.debug("getMoviesByCategoryId({})", categoryId);
-        return movieService.getMoviesByCategoryId(categoryId);
+        List<MovieDTO> movieList = movieService.getMoviesByCategoryId(categoryId);
+        model.addAttribute(movieList);
+        return "movies";
     }
 
     @RequestMapping(value = "/movie", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public @ResponseBody Integer addMovie(@RequestBody Movie movie) {
-        LOGGER.debug("addMovie({})", movie);
-        return movieService.addMovie(movie);
+    public String addMovie(@RequestParam String title,
+      @RequestParam(name = "releaseDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releaseDate,
+      @RequestParam Integer rating, @RequestParam Double price, @RequestParam Integer categoryId,
+                           Model model) {
+        LOGGER.debug("addMovie(title={}, releaseDate={}, rating={}, price={}, categoryId={})",
+                title, releaseDate, rating, price, categoryId);
+        Movie movie = new Movie(null, title, releaseDate, rating, price, categoryId);
+        movieService.addMovie(movie);
+        model.addAttribute(movieService.getAllMovies());
+        return "movies";
     }
 
     @RequestMapping(value = "/movie", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
-    public @ResponseBody Integer updateMovie(@RequestBody Movie movie) {
-        LOGGER.debug("updateMovie({})", movie);
-        return movieService.updateMovie(movie);
+    public String updateMovie(@RequestParam Integer movieId, @RequestParam String title,
+      @RequestParam(name = "releaseDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releaseDate,
+      @RequestParam Integer rating, @RequestParam Double price, @RequestParam Integer categoryId,
+                              Model model) {
+        LOGGER.debug("updateMovie(movieId={}, title={}, releaseDate={}, rating={}, price={}, " +
+            "categoryId={})", movieId, title, releaseDate, rating, price, categoryId);
+        Movie movie = new Movie(movieId, title, releaseDate, rating, price, categoryId);
+        movieService.updateMovie(movie);
+        model.addAttribute(movieService.getAllMovies());
+        return "movies";
     }
 
     @RequestMapping(value = "/movie/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Integer deleteMovie(@PathVariable(value = "id") Integer movieId) {
+    public String deleteMovie(@PathVariable(value = "id") Integer movieId, Model model) {
         LOGGER.debug("deleteMovie({})", movieId);
-        return movieService.deleteMovie(movieId);
+        movieService.deleteMovie(movieId);
+        model.addAttribute(movieService.getAllMovies());
+        return "movies";
     }
 }

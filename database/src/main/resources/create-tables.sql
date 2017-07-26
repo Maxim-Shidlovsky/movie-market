@@ -1,4 +1,11 @@
+DROP TABLE IF EXISTS client_coupon;
+DROP TABLE IF EXISTS coupon;
+DROP TABLE IF EXISTS shopping_cart;
+DROP TABLE IF EXISTS client;
+DROP TABLE IF EXISTS movie;
 DROP TABLE IF EXISTS category;
+
+
 CREATE TABLE category (
     category_id     INT            NOT NULL AUTO_INCREMENT,
     title           VARCHAR(255)   NOT NULL UNIQUE,
@@ -6,7 +13,6 @@ CREATE TABLE category (
 ) ENGINE = InnoDB;
 
 
-DROP TABLE IF EXISTS movie;
 CREATE TABLE movie (
     movie_id        INT            NOT NULL AUTO_INCREMENT,
     title           VARCHAR(255)   NOT NULL,
@@ -19,16 +25,14 @@ CREATE TABLE movie (
 ) ENGINE = InnoDB;
 
 
-DROP TABLE IF EXISTS client;
 CREATE TABLE client (
     client_id       INT            NOT NULL AUTO_INCREMENT,
-    login           VARCHAR(255)   NOT NULL,
+    username        VARCHAR(255)   NOT NULL UNIQUE,
     password        VARCHAR(255)   NOT NULL,
     PRIMARY KEY (client_id)
 ) ENGINE = InnoDB;
 
 
-DROP TABLE IF EXISTS shopping_cart;
 CREATE TABLE shopping_cart (
     order_id       INT             NOT NULL AUTO_INCREMENT,
     client_id      INT             NOT NULL,
@@ -40,7 +44,6 @@ CREATE TABLE shopping_cart (
 ) ENGINE = InnoDB;
 
 
-DROP TABLE IF EXISTS coupon;
 CREATE TABLE coupon (
     coupon_id          INT            NOT NULL AUTO_INCREMENT,
     code               VARCHAR(255)   NOT NULL,
@@ -50,7 +53,6 @@ CREATE TABLE coupon (
 ) ENGINE = InnoDB;
 
 
-DROP TABLE IF EXISTS client_coupon;
 CREATE TABLE client_coupon (
     id                 INT            NOT NULL AUTO_INCREMENT,
     client_id          INT            NOT NULL,

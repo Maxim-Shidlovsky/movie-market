@@ -32,9 +32,9 @@ VALUES
 (3, '333', 15, '2015-01-01');
 
 
-INSERT INTO client (client_id, login, password)
+INSERT INTO client (client_id, username, password)
 VALUES
-(1, 'admin', '111'),
+(1, 'admin', 'admin'),
 (2, 'user2', '111'),
 (3, 'user3', '111');
 

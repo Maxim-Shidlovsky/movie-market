@@ -17,7 +17,7 @@
     </resultMap>
 
 
-    <select id="getAllOrdersByClientId" parameterType="java.lang.Integer" resultMap="orderResultMap">
+    <select id="getAllOrdersByUsername" parameterType="java.lang.String" resultMap="orderResultMap">
         SELECT shopping_cart.order_id AS order_id,
         shopping_cart.client_id AS client_id,
         shopping_cart.movie_id AS movie_id,
@@ -28,20 +28,26 @@
         movie.release_date AS release_date,
         movie.rating AS rating,
         movie.price * (1 -
-            NVL((SELECT coupon.discount
+            IFNULL((SELECT coupon.discount
             FROM coupon LEFT JOIN client_coupon
                 ON client_coupon.coupon_id = coupon.coupon_id
-                WHERE client_coupon.client_id = #{clientId}), 1) / 100) AS price
+                WHERE client_coupon.client_id =
+                (SELECT client.client_id FROM client WHERE client.username = #{username})), 1) / 100)
+                AS price
         FROM shopping_cart
         LEFT JOIN movie ON shopping_cart.movie_id = movie.movie_id
         LEFT JOIN category ON movie.category_id = category.category_id
-        WHERE shopping_cart.client_id = #{clientId}
+        WHERE shopping_cart.client_id =
+            (SELECT client.client_id FROM client WHERE client.username = #{username})
         GROUP BY shopping_cart.order_id
     </select>
 
-    <select id="addOrder" parameterType="com.moviemarket.model.Order">
+    <select id="addOrder" parameterType="map">
         INSERT INTO shopping_cart (order_id, client_id, movie_id, order_date)
-        VALUES (#{orderId}, #{clientId}, #{movieId}, #{orderDate})
+        VALUES (
+        #{order.orderId},
+        (SELECT client.client_id FROM client WHERE username = #{username}),
+        #{order.movieId}, #{order.orderDate})
     </select>
 
     <select id="deleteOrder" parameterType="java.lang.Integer">

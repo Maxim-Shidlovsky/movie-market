@@ -8,14 +8,14 @@ import java.util.Objects;
 public class Client {
 
     private Integer clientId;
-    private String login;
+    private String username;
     private String password;
 
     public Client() { }
 
-    public Client(Integer clientId, String login, String password) {
+    public Client(Integer clientId, String username, String password) {
         this.clientId = clientId;
-        this.login = login;
+        this.username = username;
         this.password = password;
     }
 
@@ -27,12 +27,12 @@ public class Client {
         this.clientId = clientId;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -51,20 +51,21 @@ public class Client {
             return false;
         Client client = (Client) o;
         return Objects.equals(this.clientId, client.getClientId())
-                && Objects.equals(this.login, client.getLogin())
+                && Objects.equals(this.username, client.getUsername())
                 && Objects.equals(this.password, client.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.clientId, this.login, this.password);
+        return Objects.hash(this.clientId, this.username, this.password);
     }
 
     @Override
     public String toString() {
         return "Client{" +
                 "clientId=" + clientId +
-                ", login='" + login + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

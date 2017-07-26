@@ -31,13 +31,15 @@ public class OrderMapperTest {
 
 
     private static final int USER3_ORDER_LENGTH = 3;
+    private static final Integer TEST_CLIENT_ID = 3;
+    private static final String TEST_USERNAME = "user3";
     private static final Order testOrder = new Order(3, 3, 10,
             new Date(117, 0, 1));
 
     @Test
-    public void getAllOrdersByClientId() throws Exception {
-        LOGGER.debug("getAllOrdersByClientId()");
-        List<OrderDTO> orders = orderMapper.getAllOrdersByClientId(3);
+    public void getAllOrdersByUsername() throws Exception {
+        LOGGER.debug("getAllOrdersByUsername()");
+        List<OrderDTO> orders = orderMapper.getAllOrdersByUsername(TEST_USERNAME);
 
         Assert.assertEquals(USER3_ORDER_LENGTH, orders.size());
         Assert.assertEquals(testOrder.getOrderId(), orders.get(0).getOrderId());
@@ -49,18 +51,19 @@ public class OrderMapperTest {
     public void addOrder() throws Exception {
         LOGGER.debug("addOrder()");
         Order newOrder = new Order();
-        newOrder.setClientId(3);
         newOrder.setMovieId(7);
         newOrder.setOrderDate(new Date(117, 2, 2));
-        orderMapper.addOrder(newOrder);
+        orderMapper.addOrder(newOrder, TEST_USERNAME);
 
-        List<OrderDTO> orders = orderMapper.getAllOrdersByClientId(3);
+        List<OrderDTO> orders = orderMapper.getAllOrdersByUsername(TEST_USERNAME);
+        for (OrderDTO o : orders)
+            System.out.println(o);
         int quantityAfterAdding = orders.size();
         Assert.assertEquals(USER3_ORDER_LENGTH + 1, quantityAfterAdding);
 
         OrderDTO addedOrder = orders.get(3);
         Assert.assertNotNull(addedOrder);
-        Assert.assertEquals(newOrder.getClientId(), addedOrder.getClientId());
+        Assert.assertEquals((Integer) TEST_CLIENT_ID, addedOrder.getClientId());
         Assert.assertEquals(newOrder.getMovieId(), addedOrder.getMovieId());
         Assert.assertEquals(newOrder.getOrderDate(), addedOrder.getOrderDate());
     }
@@ -69,7 +72,7 @@ public class OrderMapperTest {
     public void deleteOrder() throws Exception {
         LOGGER.debug("deleteOrder()");
         orderMapper.deleteOrder(3);
-        int quantityAfterDeleting = orderMapper.getAllOrdersByClientId(3).size();
+        int quantityAfterDeleting = orderMapper.getAllOrdersByUsername(TEST_USERNAME).size();
         Assert.assertEquals(USER3_ORDER_LENGTH - 1, quantityAfterDeleting);
     }
 }
