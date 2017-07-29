@@ -12,36 +12,27 @@
     </definition>
 
     <definition name="movies" extends="template">
-        <put-attribute name="body" value="/WEB-INF/views/movies.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/movies.jsp"/>
     </definition>
 
     <definition name="categories" extends="template">
-        <put-attribute name="body" value="/WEB-INF/views/categories.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/categories.jsp"/>
     </definition>
 
     <definition name="coupons" extends="template">
-        <put-attribute name="body" value="/WEB-INF/views/coupons.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/coupons.jsp"/>
     </definition>
 
     <definition name="orders" extends="template">
-        <put-attribute name="body" value="/WEB-INF/views/orders.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/orders.jsp"/>
     </definition>
-
-    <definition name="index" extends="template">
-        <put-attribute name="body" value="/WEB-INF/views/index.jsp"/>
-    </definition>
-
-    <definition name="tiles/add" extends="template">
-        <put-attribute name="footer" value="/WEB-INF/views/tiles/add.jsp"/>
-    </definition>
-
 
     <definition name="login_template" template="/WEB-INF/views/login_template.jsp">
         <put-attribute name="body" value="" />
     </definition>
 
     <definition name="login" extends="login_template">
-        <put-attribute name="body" value="/WEB-INF/views/login.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/login.jsp"/>
     </definition>
 
 </tiles-definitions>

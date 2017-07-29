@@ -26,7 +26,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client getClient(String username) {
-        LOGGER.debug("getClient(username={})", username);
+        LOGGER.debug("getClient(username=\"{}\")", username);
         Assert.notNull(username, "Username mustn't be null");
         Assert.hasText(username, "Username must have text.");
 

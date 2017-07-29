@@ -55,7 +55,7 @@ CREATE TABLE coupon (
 
 CREATE TABLE client_coupon (
     id                 INT            NOT NULL AUTO_INCREMENT,
-    client_id          INT            NOT NULL,
+    client_id          INT            NOT NULL UNIQUE,
     coupon_id          INT            NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (client_id) REFERENCES client(client_id) ON DELETE CASCADE,

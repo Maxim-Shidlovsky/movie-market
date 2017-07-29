@@ -1,6 +1,8 @@
 package com.moviemarket.service;
 
 import com.moviemarket.model.Coupon;
+import com.moviemarket.model.MovieDTO;
+import com.moviemarket.model.OrderDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -28,12 +30,30 @@ public class CouponServiceTest {
     @Autowired
     private CouponService couponService;
 
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private MovieService movieService;
+
 
     private static final int COUPONS_LENGTH = 3;
     private static final Integer TEST_ID = 3;
     private static final String TEST_CODE = "333";
-    private static final Coupon testCoupon = new Coupon(1, "123",
+    private static final Coupon TEST_COUPON = new Coupon(1, "123",
             20D, new Date(117, 0, 1));
+    private static final String TEST_USERNAME = "user2";
+
+    @Test
+    public void activateCouponTest() throws Exception {
+        LOGGER.debug("activateCouponTest()");
+        couponService.activateCoupon(TEST_COUPON.getCode(), TEST_USERNAME);
+        OrderDTO order = orderService.getAllOrdersByUsername(TEST_USERNAME).get(0);
+        MovieDTO movie = movieService.getMovieById(1);
+        double expectedPrice = movie.getPrice() * (1D - (TEST_COUPON.getDiscount() / 100D));
+        double actualPrice = order.getPrice();
+        Assert.assertEquals(expectedPrice, actualPrice, 2);
+    }
 
     @Test
     public void getAllCouponsTest() throws Exception {
@@ -42,7 +62,7 @@ public class CouponServiceTest {
 
         Assert.assertNotNull(coupons);
         Assert.assertEquals(COUPONS_LENGTH, coupons.size());
-        Assert.assertEquals(testCoupon, coupons.get(0));
+        Assert.assertEquals(TEST_COUPON, coupons.get(0));
     }
 
     @Test

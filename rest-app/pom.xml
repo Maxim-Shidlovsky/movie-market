@@ -60,6 +60,12 @@
             <artifactId>tiles-jsp</artifactId>
         </dependency>
 
+        <!-- JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
         <!-- Logging dependencies. -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -83,10 +89,7 @@
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
+
 
     </dependencies>
 

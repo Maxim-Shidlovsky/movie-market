@@ -7,18 +7,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Maxim on 13.7.17.
  */
 
-@Controller
+@CrossOrigin
+@RestController
+@RequestMapping(value = "/categories")
 public class CategoryRestController {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -33,59 +32,42 @@ public class CategoryRestController {
     }
 
 
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    public String getAllCategories(Model model) {
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody List<CategoryDTO> getAllCategories() {
         LOGGER.debug("getAllCategories()");
-        List<CategoryDTO> categoryList = categoryService.getAllCategories();
-        model.addAttribute(categoryList);
-        return "categories";
+        return categoryService.getAllCategories();
     }
 
     @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
-    public String getCategoryById(@PathVariable(value = "id") Integer categoryId, Model model) {
+    public @ResponseBody CategoryDTO getCategoryById(@PathVariable(value = "id") Integer categoryId) {
         LOGGER.debug("getCategoryById({})", categoryId);
-        List<CategoryDTO> categoryList = new ArrayList<CategoryDTO>();
-        categoryList.add(categoryService.getCategoryById(categoryId));
-        model.addAttribute(categoryList);
-        return "categories";
+        return categoryService.getCategoryById(categoryId);
     }
 
     @RequestMapping(value = "/category/title/{title}", method = RequestMethod.GET)
-    public String getCategoryByTitle(@PathVariable(value = "title") String title, Model model) {
+    public @ResponseBody CategoryDTO getCategoryByTitle(@PathVariable(value = "title") String title) {
         LOGGER.debug("getCategoryByTitle({})", title);
-        List<CategoryDTO> categoryList = new ArrayList<CategoryDTO>();
-        categoryList.add(categoryService.getCategoryByTitle(title));
-        model.addAttribute(categoryList);
-        return "categories";
+        return categoryService.getCategoryByTitle(title);
     }
 
-    @RequestMapping(value = "/category", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public String addCategory(@RequestParam String title, Model model) {
-        LOGGER.debug("addCategory(title={})", title);
-        Category category = new Category(null, title);
+    public void addCategory(@RequestBody Category category) {
+        LOGGER.debug("addCategory({})", category);
         categoryService.addCategory(category);
-        model.addAttribute(categoryService.getAllCategories());
-        return "categories";
     }
 
     @RequestMapping(value = "/category", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
-    public String updateCategory(@RequestParam Integer categoryId, @RequestParam String title,
-              Model model) {
-        LOGGER.debug("updateCategory(categoryId={}, title={})", categoryId, title);
-        Category category = new Category(categoryId, title);
+    public void updateCategory(@RequestBody Category category) {
+        LOGGER.debug("updateCategory({})", category);
         categoryService.updateCategory(category);
-        model.addAttribute(categoryService.getAllCategories());
-        return "categories";
     }
 
     @RequestMapping(value = "/category/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
-    public String deleteCategory(@PathVariable(value = "id") Integer categoryId, Model model) {
+    public void deleteCategory(@PathVariable(value = "id") Integer categoryId) {
         LOGGER.debug("deleteCategory({})", categoryId);
         categoryService.deleteCategory(categoryId);
-        model.addAttribute(categoryService.getAllCategories());
-        return "categories";
     }
 }

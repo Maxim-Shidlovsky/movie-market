@@ -18,8 +18,10 @@ import java.util.List;
  * Created by Maxim on 25.7.17.
  */
 
-@Controller
-public class OrderController {
+@CrossOrigin
+@RestController
+@RequestMapping(value = "/orders")
+public class OrderRestController {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -37,32 +39,26 @@ public class OrderController {
         return "{  \"response\" : \"Incorrect Data Error\" }";
     }
 
-    @RequestMapping(value = "/orders/{username}", method = RequestMethod.GET)
-    public String getAllOrdersByUsername(@PathVariable(name = "username") String username,
-                                         Model model) {
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public @ResponseBody List<OrderDTO> getAllOrdersByUsername(
+            @PathVariable(name = "username") String username) {
         LOGGER.debug("getAllOrdersByUsername({})", username);
-        model.addAttribute(orderService.getAllOrdersByUsername(username));
-        return "orders";
+        return orderService.getAllOrdersByUsername(username);
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
+    @RequestMapping(value = "/{username}/movie/{id}", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public String addOrder(@PathVariable Integer movieId, @RequestParam String username,
-                           Model model) {
+    public void addOrder(@PathVariable(name = "username") String username,
+                         @PathVariable(name = "id") Integer movieId) {
         LOGGER.debug("addOrder(movieId={}, username={})", movieId, username);
         Order order = new Order(null, null, movieId, new Date());
         orderService.addOrder(order, username);
-        model.addAttribute(orderService.getAllOrdersByUsername(username));
-        return "orders";
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/order/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
-    public String deleteOrder(@RequestParam Integer orderId, @RequestParam String username,
-                              Model model) {
-        LOGGER.debug("deleteOrder(orderId={}, username={})", orderId, username);
+    public void deleteOrder(@PathVariable(name = "id") Integer orderId) {
+        LOGGER.debug("deleteOrder(orderId={})", orderId);
         orderService.deleteOrder(orderId);
-        model.addAttribute(orderService.getAllOrdersByUsername(username));
-        return "orders";
     }
 }

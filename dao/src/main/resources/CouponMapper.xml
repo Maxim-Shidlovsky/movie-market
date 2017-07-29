@@ -11,6 +11,12 @@
     </resultMap>
 
 
+    <select id="activateCoupon" parameterType="map">
+        INSERT INTO client_coupon (client_id, coupon_id)
+        VALUES ((SELECT client.client_id FROM client WHERE client.username = #{username}),
+                (SELECT coupon.coupon_id FROM coupon WHERE coupon.code = #{code}));
+    </select>
+
     <select id="getAllCoupons" resultMap="couponResultMap">
         SELECT * FROM coupon
     </select>

@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface CouponService {
 
+    public void activateCoupon(String code, String username) throws DataAccessException;
+
     public List<Coupon> getAllCoupons() throws DataAccessException;
 
     public Coupon getCouponById(Integer couponId) throws DataAccessException;

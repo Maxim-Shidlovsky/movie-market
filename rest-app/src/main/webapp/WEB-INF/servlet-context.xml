@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/jdbc
-       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/context
@@ -19,13 +16,38 @@
 
     <mvc:annotation-driven/>
 
-    <!--
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jsp"/>
+
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property  name="contentNegotiationManager">
+            <bean id="contentNegotiationManager"
+                  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+                <property name="defaultContentType" value="text/html"/>
+                <property name="ignoreAcceptHeader" value="true"/>
+                <property name="favorPathExtension" value="true"/>
+
+                <property name="mediaTypes">
+                    <map>
+                        <entry key="html" value="text/html"/>
+                        <entry key="json" value="application/json"/>
+                    </map>
+                </property>
+            </bean>
+        </property>
+
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+                    <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+                </bean>
+            </list>
+        </property>
+
+        <property name="defaultViews">
+            <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+        </property>
     </bean>
-    -->
+
+
 
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
@@ -36,22 +58,5 @@
         </property>
     </bean>
 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
-
-
-    <!--
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <ref bean="jsonConverter"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-        <property name="supportedMediaTypes" value="application/json" />
-        <property name="prettyPrint" value="true" />
-    </bean>
-    -->
 
 </beans>

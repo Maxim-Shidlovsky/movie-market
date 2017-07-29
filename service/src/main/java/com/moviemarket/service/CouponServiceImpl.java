@@ -26,6 +26,16 @@ public class CouponServiceImpl implements CouponService {
 
 
     @Override
+    public void activateCoupon(String code, String username) throws DataAccessException {
+        LOGGER.debug("activateCoupon(code=\"{}\", username=\"{}\")", code, username);
+        Assert.notNull(code, "Coupon's code mustn't be null.");
+        Assert.hasText(code, "Coupon's code must have text.");
+        Assert.notNull(username, "Username mustn't be null.");
+        Assert.hasText(username, "Username must have text.");
+        couponMapper.activateCoupon(code, username);
+    }
+
+    @Override
     public List<Coupon> getAllCoupons() throws DataAccessException {
         LOGGER.debug("getAllCoupons()");
         return couponMapper.getAllCoupons();

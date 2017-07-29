@@ -32,7 +32,7 @@
             FROM coupon LEFT JOIN client_coupon
                 ON client_coupon.coupon_id = coupon.coupon_id
                 WHERE client_coupon.client_id =
-                (SELECT client.client_id FROM client WHERE client.username = #{username})), 1) / 100)
+                (SELECT client.client_id FROM client WHERE client.username = #{username})), 0) / 100)
                 AS price
         FROM shopping_cart
         LEFT JOIN movie ON shopping_cart.movie_id = movie.movie_id

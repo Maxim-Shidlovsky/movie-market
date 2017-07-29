@@ -1,6 +1,7 @@
 package com.moviemarket.dao;
 
 import com.moviemarket.model.Coupon;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.dao.DataAccessException;
 
 import java.util.List;
@@ -9,6 +10,9 @@ import java.util.List;
  * Created by Maxim on 14.7.17.
  */
 public interface CouponMapper {
+
+    public void activateCoupon(@Param("code") String code, @Param("username") String username)
+            throws DataAccessException;
 
     public List<Coupon> getAllCoupons() throws DataAccessException;
 
