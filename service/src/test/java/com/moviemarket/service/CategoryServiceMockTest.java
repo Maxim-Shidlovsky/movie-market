@@ -34,7 +34,7 @@ public class CategoryServiceMockTest {
     private CategoryMapper mockCategoryMapper;
 
 
-    private static final CategoryDTO testCategory =
+    private static final CategoryDTO TEST_CATEGORY =
             new CategoryDTO(1, "Thriller", 2);
 
     @After
@@ -56,33 +56,36 @@ public class CategoryServiceMockTest {
     @Test
     public void getCategoryByIdTest() throws Exception {
         LOGGER.debug("getCategoryByIdTest()");
-        EasyMock.expect(mockCategoryMapper.getCategoryById(testCategory.getCategoryId()))
-                .andReturn(testCategory);
+        EasyMock.expect(mockCategoryMapper.getCategoryById(TEST_CATEGORY.getCategoryId()))
+                .andReturn(TEST_CATEGORY);
         EasyMock.replay(mockCategoryMapper);
-        Assert.assertEquals(testCategory, mockCategoryMapper.getCategoryById(testCategory.getCategoryId()));
+        Assert.assertEquals(TEST_CATEGORY,
+                categoryService.getCategoryById(TEST_CATEGORY.getCategoryId()));
     }
 
     @Test
     public void getCategoryByTitleTest() throws Exception {
         LOGGER.debug("getAllCategoriesTest()");
-        EasyMock.expect(mockCategoryMapper.getCategoryByTitle(testCategory.getTitle()))
-                .andReturn(testCategory);
+        EasyMock.expect(mockCategoryMapper.getCategoryByTitle(TEST_CATEGORY.getTitle()))
+                .andReturn(TEST_CATEGORY);
         EasyMock.replay(mockCategoryMapper);
-        Assert.assertEquals(testCategory, mockCategoryMapper.getCategoryByTitle(testCategory.getTitle()));
+        Assert.assertEquals(TEST_CATEGORY,
+                categoryService.getCategoryByTitle(TEST_CATEGORY.getTitle()));
     }
 
     @Test
     public void addCategoryTest() throws Exception {
         LOGGER.debug("addCategoryTest()");
         Category category = new Category();
-        category.setTitle(testCategory.getTitle());
-        EasyMock.expect(mockCategoryMapper.addCategory(category)).andReturn(testCategory.getCategoryId());
-        EasyMock.expect(mockCategoryMapper.getCategoryById(testCategory.getCategoryId()))
-                .andReturn(testCategory);
+        category.setTitle(TEST_CATEGORY.getTitle());
+        EasyMock.expect(mockCategoryMapper.addCategory(category))
+                .andReturn(TEST_CATEGORY.getCategoryId());
+        EasyMock.expect(mockCategoryMapper.getCategoryById(TEST_CATEGORY.getCategoryId()))
+                .andReturn(TEST_CATEGORY);
         EasyMock.replay(mockCategoryMapper);
         Integer newId = categoryService.addCategory(category);
         CategoryDTO addedCategory = categoryService.getCategoryById(newId);
-        Assert.assertEquals(testCategory.getTitle(), addedCategory.getTitle());
+        Assert.assertEquals(TEST_CATEGORY.getTitle(), addedCategory.getTitle());
     }
 
     @Test

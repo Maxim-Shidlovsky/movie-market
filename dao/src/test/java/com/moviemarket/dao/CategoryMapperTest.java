@@ -32,7 +32,7 @@ public class CategoryMapperTest {
     private static final int CATEGORIES_LENGTH = 5;
     private static final Integer TEST_ID = 3;
     private static final String TEST_TITLE = "Fantastic";
-    private static final CategoryDTO testCategory =
+    private static final CategoryDTO TEST_CATEGORY =
             new CategoryDTO(1, "Thriller", 2);
 
     @Test
@@ -42,7 +42,7 @@ public class CategoryMapperTest {
 
         Assert.assertNotNull(categories);
         Assert.assertEquals(CATEGORIES_LENGTH, categories.size());
-        Assert.assertEquals(testCategory, categories.get(0));
+        Assert.assertEquals(TEST_CATEGORY, categories.get(0));
     }
 
     @Test

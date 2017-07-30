@@ -10,5 +10,5 @@ public interface ClientMapper {
 
     public Client getClient(String username) throws DataAccessException;
 
-    //TODO: addClient(), updateClient(), deleteClient()
+    public Integer addClient(Client client) throws DataAccessException;
 }

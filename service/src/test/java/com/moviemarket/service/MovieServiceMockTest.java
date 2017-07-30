@@ -35,11 +35,7 @@ public class MovieServiceMockTest {
     private MovieMapper mockMovieMapper;
 
 
-    private static final int MOVIES_LENGTH = 14;
-    private static final Integer TEST_ID = 4;
-    private static final String TEST_TITLE = "Gladiator";
-    private static final int FIRST_CATEGORY_LENGTH = 2;
-    private static final MovieDTO testMovie = new MovieDTO(1, "Terminator",
+    private static final MovieDTO TEST_MOVIE = new MovieDTO(1, "Terminator",
             new Date(84, 9, 26), 8, 5D, 1, "Thriller");
 
     @After
@@ -61,19 +57,19 @@ public class MovieServiceMockTest {
     @Test
     public void getMovieByIdTest() throws Exception {
         LOGGER.debug("getMovieByIdTest()");
-        EasyMock.expect(mockMovieMapper.getMovieById(testMovie.getMovieId()))
-                .andReturn(testMovie);
+        EasyMock.expect(mockMovieMapper.getMovieById(TEST_MOVIE.getMovieId()))
+                .andReturn(TEST_MOVIE);
         EasyMock.replay(mockMovieMapper);
-        Assert.assertEquals(testMovie, mockMovieMapper.getMovieById(testMovie.getMovieId()));
+        Assert.assertEquals(TEST_MOVIE, movieService.getMovieById(TEST_MOVIE.getMovieId()));
     }
 
     @Test
     public void getMovieByTitleTest() throws Exception {
         LOGGER.debug("getMovieByTitleTest()");
-        EasyMock.expect(mockMovieMapper.getMovieByTitle(testMovie.getTitle()))
-                .andReturn(testMovie);
+        EasyMock.expect(mockMovieMapper.getMovieByTitle(TEST_MOVIE.getTitle()))
+                .andReturn(TEST_MOVIE);
         EasyMock.replay(mockMovieMapper);
-        Assert.assertEquals(testMovie, mockMovieMapper.getMovieByTitle(testMovie.getTitle()));
+        Assert.assertEquals(TEST_MOVIE, movieService.getMovieByTitle(TEST_MOVIE.getTitle()));
     }
 
     @Test
@@ -89,18 +85,18 @@ public class MovieServiceMockTest {
     public void addMovieTest() throws Exception {
         LOGGER.debug("addMovieTest()");
         Movie movie = new Movie();
-        movie.setTitle(testMovie.getTitle());
+        movie.setTitle(TEST_MOVIE.getTitle());
         movie.setReleaseDate(new Date(2000, 1, 1));
         movie.setRating(1);
         movie.setPrice(10D);
         movie.setCategoryId(1);
-        EasyMock.expect(mockMovieMapper.addMovie(movie)).andReturn(testMovie.getMovieId());
-        EasyMock.expect(mockMovieMapper.getMovieById(testMovie.getMovieId()))
-                .andReturn(testMovie);
+        EasyMock.expect(mockMovieMapper.addMovie(movie)).andReturn(TEST_MOVIE.getMovieId());
+        EasyMock.expect(mockMovieMapper.getMovieById(TEST_MOVIE.getMovieId()))
+                .andReturn(TEST_MOVIE);
         EasyMock.replay(mockMovieMapper);
         Integer newId = movieService.addMovie(movie);
         MovieDTO addedMovie = movieService.getMovieById(newId);
-        Assert.assertEquals(testMovie.getTitle(), addedMovie.getTitle());
+        Assert.assertEquals(TEST_MOVIE.getTitle(), addedMovie.getTitle());
     }
 
     @Test

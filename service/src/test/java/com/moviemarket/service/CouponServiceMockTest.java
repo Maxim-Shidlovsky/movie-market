@@ -34,7 +34,7 @@ public class CouponServiceMockTest {
     private CouponMapper mockCouponMapper;
 
 
-    private static final Coupon testCoupon = new Coupon(1, "123",
+    private static final Coupon TEST_COUPON = new Coupon(1, "123",
             20D, new Date(117, 0, 1));
 
     @After
@@ -43,6 +43,7 @@ public class CouponServiceMockTest {
         EasyMock.verify(mockCouponMapper);
         EasyMock.reset(mockCouponMapper);
     }
+
 
     @Test
     public void getAllCouponsTest() throws Exception {
@@ -56,37 +57,37 @@ public class CouponServiceMockTest {
     @Test
     public void getCouponByIdTest() throws Exception {
         LOGGER.debug("getCouponByIdTest()");
-        EasyMock.expect(mockCouponMapper.getCouponById(testCoupon.getCouponId()))
-                .andReturn(testCoupon);
+        EasyMock.expect(mockCouponMapper.getCouponById(TEST_COUPON.getCouponId()))
+                .andReturn(TEST_COUPON);
         EasyMock.replay(mockCouponMapper);
-        Assert.assertEquals(testCoupon, mockCouponMapper.getCouponById(testCoupon.getCouponId()));
+        Assert.assertEquals(TEST_COUPON, couponService.getCouponById(TEST_COUPON.getCouponId()));
     }
 
     @Test
     public void getCouponByCodeTest() throws Exception {
         LOGGER.debug("getCouponByCodeTest()");
-        EasyMock.expect(mockCouponMapper.getCouponByCode(testCoupon.getCode()))
-                .andReturn(testCoupon);
+        EasyMock.expect(mockCouponMapper.getCouponByCode(TEST_COUPON.getCode()))
+                .andReturn(TEST_COUPON);
         EasyMock.replay(mockCouponMapper);
-        Assert.assertEquals(testCoupon, mockCouponMapper.getCouponByCode(testCoupon.getCode()));
+        Assert.assertEquals(TEST_COUPON, couponService.getCouponByCode(TEST_COUPON.getCode()));
     }
 
     @Test
     public void addCouponTest() throws Exception {
         LOGGER.debug("addCouponTest()");
         Coupon coupon = new Coupon();
-        coupon.setCode(testCoupon.getCode());
-        coupon.setDiscount(testCoupon.getDiscount());
-        coupon.setReceivingDate(testCoupon.getReceivingDate());
-        EasyMock.expect(mockCouponMapper.addCoupon(coupon)).andReturn(testCoupon.getCouponId());
-        EasyMock.expect(mockCouponMapper.getCouponById(testCoupon.getCouponId()))
-                .andReturn(testCoupon);
+        coupon.setCode(TEST_COUPON.getCode());
+        coupon.setDiscount(TEST_COUPON.getDiscount());
+        coupon.setReceivingDate(TEST_COUPON.getReceivingDate());
+        EasyMock.expect(mockCouponMapper.addCoupon(coupon)).andReturn(TEST_COUPON.getCouponId());
+        EasyMock.expect(mockCouponMapper.getCouponById(TEST_COUPON.getCouponId()))
+                .andReturn(TEST_COUPON);
         EasyMock.replay(mockCouponMapper);
         Integer newId = couponService.addCoupon(coupon);
         Coupon addedCoupon = couponService.getCouponById(newId);
-        Assert.assertEquals(testCoupon.getCode(), addedCoupon.getCode());
-        Assert.assertEquals(testCoupon.getDiscount(), addedCoupon.getDiscount());
-        Assert.assertEquals(testCoupon.getReceivingDate(), addedCoupon.getReceivingDate());
+        Assert.assertEquals(TEST_COUPON.getCode(), addedCoupon.getCode());
+        Assert.assertEquals(TEST_COUPON.getDiscount(), addedCoupon.getDiscount());
+        Assert.assertEquals(TEST_COUPON.getReceivingDate(), addedCoupon.getReceivingDate());
     }
 
     @Test

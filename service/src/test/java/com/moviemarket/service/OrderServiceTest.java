@@ -1,4 +1,4 @@
-package com.moviemarket.dao;
+package com.moviemarket.service;
 
 import com.moviemarket.model.Order;
 import com.moviemarket.model.OrderDTO;
@@ -16,18 +16,18 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Maxim on 16.7.17.
+ * Created by Maxim on 30.7.17.
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:test-mybatis-spring.xml"})
+@ContextConfiguration(locations = {"classpath*:test-service-spring.xml"})
 @Transactional
-public class OrderMapperTest {
+public class OrderServiceTest {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Autowired
-    private OrderMapper orderMapper;
+    private OrderService orderService;
 
 
     private static final int USER3_ORDER_LENGTH = 3;
@@ -37,9 +37,9 @@ public class OrderMapperTest {
             new Date(117, 0, 1));
 
     @Test
-    public void getAllOrdersByUsername() throws Exception {
-        LOGGER.debug("getAllOrdersByUsername()");
-        List<OrderDTO> orders = orderMapper.getAllOrdersByUsername(TEST_USERNAME);
+    public void getAllOrdersByUsernameTest() throws Exception {
+        LOGGER.debug("getAllOrdersByUsernameTest()");
+        List<OrderDTO> orders = orderService.getAllOrdersByUsername(TEST_USERNAME);
 
         Assert.assertEquals(USER3_ORDER_LENGTH, orders.size());
         Assert.assertEquals(TEST_ORDER.getOrderId(), orders.get(0).getOrderId());
@@ -48,14 +48,14 @@ public class OrderMapperTest {
     }
 
     @Test
-    public void addOrder() throws Exception {
-        LOGGER.debug("addOrder()");
+    public void addOrderTest() throws Exception {
+        LOGGER.debug("addOrderTest()");
         Order newOrder = new Order();
         newOrder.setMovieId(7);
         newOrder.setOrderDate(new Date(117, 2, 2));
-        orderMapper.addOrder(newOrder, TEST_USERNAME);
+        orderService.addOrder(newOrder, TEST_USERNAME);
 
-        List<OrderDTO> orders = orderMapper.getAllOrdersByUsername(TEST_USERNAME);
+        List<OrderDTO> orders = orderService.getAllOrdersByUsername(TEST_USERNAME);
         for (OrderDTO o : orders)
             System.out.println(o);
         int quantityAfterAdding = orders.size();
@@ -63,16 +63,16 @@ public class OrderMapperTest {
 
         OrderDTO addedOrder = orders.get(3);
         Assert.assertNotNull(addedOrder);
-        Assert.assertEquals((Integer) TEST_CLIENT_ID, addedOrder.getClientId());
+        Assert.assertEquals(TEST_CLIENT_ID, addedOrder.getClientId());
         Assert.assertEquals(newOrder.getMovieId(), addedOrder.getMovieId());
         Assert.assertEquals(newOrder.getOrderDate(), addedOrder.getOrderDate());
     }
 
     @Test
-    public void deleteOrder() throws Exception {
-        LOGGER.debug("deleteOrder()");
-        orderMapper.deleteOrder(3);
-        int quantityAfterDeleting = orderMapper.getAllOrdersByUsername(TEST_USERNAME).size();
+    public void deleteOrderTest() throws Exception {
+        LOGGER.debug("deleteOrderTest()");
+        orderService.deleteOrder(3);
+        int quantityAfterDeleting = orderService.getAllOrdersByUsername(TEST_USERNAME).size();
         Assert.assertEquals(USER3_ORDER_LENGTH - 1, quantityAfterDeleting);
     }
 }

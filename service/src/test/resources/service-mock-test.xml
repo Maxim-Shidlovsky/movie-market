@@ -4,6 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
     <bean id="categoryMapper" class="org.easymock.EasyMock" factory-method="createMock">
         <constructor-arg value="com.moviemarket.dao.CategoryMapper"/>
     </bean>
@@ -26,6 +27,22 @@
 
     <bean id="couponService" class="com.moviemarket.service.CouponServiceImpl">
         <property name="couponMapper" ref="couponMapper"/>
+    </bean>
+
+    <bean id="orderMapper" class="org.easymock.EasyMock" factory-method="createMock">
+        <constructor-arg value="com.moviemarket.dao.OrderMapper"/>
+    </bean>
+
+    <bean id="orderService" class="com.moviemarket.service.OrderServiceImpl">
+        <property name="orderMapper" ref="orderMapper"/>
+    </bean>
+
+    <bean id="clientMapper" class="org.easymock.EasyMock" factory-method="createMock">
+        <constructor-arg value="com.moviemarket.dao.ClientMapper"/>
+    </bean>
+
+    <bean id="clientService" class="com.moviemarket.service.ClientServiceImpl">
+        <property name="clientMapper" ref="clientMapper"/>
     </bean>
 
 </beans>

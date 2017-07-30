@@ -3,20 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:component-scan base-package="com.moviemarket.rest"/>
 
-    <bean id="categoryMapper" class="org.easymock.EasyMock" factory-method="createMock">
-        <constructor-arg value="com.moviemarket.dao.CategoryMapper" />
-    </bean>
-
-    <bean id="movieMapper" class="org.easymock.EasyMock" factory-method="createMock">
-        <constructor-arg value="com.moviemarket.dao.MovieMapper" />
-    </bean>
-
-    <bean id="couponMapper" class="org.easymock.EasyMock" factory-method="createMock">
-        <constructor-arg value="com.moviemarket.dao.CouponMapper" />
-    </bean>
 
     <bean id="categoryService" class="org.easymock.EasyMock" factory-method="createMock">
         <constructor-arg value="com.moviemarket.service.CategoryService"/>
@@ -30,7 +22,8 @@
         <constructor-arg value="com.moviemarket.service.CouponService"/>
     </bean>
 
-
-    <context:component-scan base-package="com.moviemarket.rest"/>
+    <bean id="orderService" class="org.easymock.EasyMock" factory-method="createMock">
+        <constructor-arg value="com.moviemarket.service.OrderService"/>
+    </bean>
 
 </beans>

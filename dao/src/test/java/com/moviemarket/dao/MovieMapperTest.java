@@ -34,7 +34,7 @@ public class MovieMapperTest {
     private static final Integer TEST_ID = 4;
     private static final String TEST_TITLE = "Gladiator";
     private static final int FIRST_CATEGORY_LENGTH = 2;
-    private static final MovieDTO testMovie = new MovieDTO(1, "Terminator",
+    private static final MovieDTO TEST_MOVIE = new MovieDTO(1, "Terminator",
             new Date(84, 9, 26), 8, 5D, 1, "Thriller");
 
     @Test
@@ -43,7 +43,7 @@ public class MovieMapperTest {
         List<MovieDTO> movies = movieMapper.getAllMovies();
 
         Assert.assertEquals(MOVIES_LENGTH, movies.size());
-        Assert.assertEquals(testMovie, movies.get(0));
+        Assert.assertEquals(TEST_MOVIE, movies.get(0));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class MovieMapperTest {
         Assert.assertTrue(movies.size() == FIRST_CATEGORY_LENGTH);
         MovieDTO movie = movies.get(0);
         Assert.assertNotNull(movie);
-        Assert.assertEquals(testMovie, movie);
+        Assert.assertEquals(TEST_MOVIE, movie);
     }
 
     @Test

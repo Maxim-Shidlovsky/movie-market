@@ -13,7 +13,9 @@
 
 <body>
 
-<tiles:insertAttribute name="body" />
+<div class="container" style="width: 300px;>
+    <tiles:insertAttribute name="body" />
+</div>
 
 </body>
 </html>

@@ -2,44 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62300b69-1186-420f-8ceb-f10a1df6c59d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/MainController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/categories.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/coupons.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/movies.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/orders.jsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/categories.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/coupons.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/login.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/movies.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/orders.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/add.jsp" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/ClientMapperTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/registration.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/test/java/com/moviemarket/rest/CategoryControllerMockTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/test/java/com/moviemarket/rest/CouponControllerMockTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/test/java/com/moviemarket/rest/MovieControllerMockTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rest-app/src/test/java/com/moviemarket/rest/OrderControllerMockTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/ClientServiceMockTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/OrderServiceMockTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/OrderServiceTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/moviemarket/dao/CouponMapper.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/moviemarket/dao/CouponMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/CouponMapper.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/CouponMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/OrderMapper.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/CouponMapperTest.java" afterPath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/CouponMapperTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/src/main/resources/create-tables.sql" afterPath="$PROJECT_DIR$/database/src/main/resources/create-tables.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/src/main/resources/data-script.sql" afterPath="$PROJECT_DIR$/database/src/main/resources/data-script.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/pom.xml" afterPath="$PROJECT_DIR$/rest-app/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/CategoryRestController.java" afterPath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/CategoryRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/CouponRestController.java" afterPath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/CouponRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/MovieRestController.java" afterPath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/MovieRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/security-context.xml" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/security-context.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/servlet-context.xml" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/servlet-context.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/spring-context.xml" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/spring-context.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/main_template.jsp" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/main_template.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/header.jsp" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/header.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/moviemarket/dao/ClientMapper.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/moviemarket/dao/ClientMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ClientMapper.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ClientMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/CategoryMapperTest.java" afterPath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/CategoryMapperTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/MovieMapperTest.java" afterPath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/MovieMapperTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/OrderMapperTest.java" afterPath="$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/OrderMapperTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/test/resources/test-mybatis-spring.xml" afterPath="$PROJECT_DIR$/dao/src/test/resources/test-mybatis-spring.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/MainController.java" afterPath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/login_template.jsp" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/login_template.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/login.jsp" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/views.xml" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/views.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-api/src/main/java/com/moviemarket/service/CouponService.java" afterPath="$PROJECT_DIR$/service-api/src/main/java/com/moviemarket/service/CouponService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/moviemarket/service/ClientDetailsServiceImpl.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/moviemarket/service/ClientDetailsServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-app/src/test/resources/rest-mock-test.xml" afterPath="$PROJECT_DIR$/rest-app/src/test/resources/rest-mock-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-api/src/main/java/com/moviemarket/service/ClientService.java" afterPath="$PROJECT_DIR$/service-api/src/main/java/com/moviemarket/service/ClientService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/moviemarket/service/ClientServiceImpl.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/moviemarket/service/ClientServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/moviemarket/service/CouponServiceImpl.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/moviemarket/service/CouponServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CouponServiceTest.java" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CouponServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CategoryServiceMockTest.java" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CategoryServiceMockTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CategoryServiceTest.java" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CategoryServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/ClientServiceTest.java" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/ClientServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CouponServiceMockTest.java" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CouponServiceMockTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/MovieServiceMockTest.java" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/MovieServiceMockTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/MovieServiceTest.java" afterPath="$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/MovieServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/resources/service-mock-test.xml" afterPath="$PROJECT_DIR$/service/src/test/resources/service-mock-test.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/test/resources/test-service-spring.xml" afterPath="$PROJECT_DIR$/service/src/test/resources/test-service-spring.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/OrderController.java" afterPath="$PROJECT_DIR$/rest-app/src/main/java/com/moviemarket/rest/OrderRestController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/login.jsp" afterPath="$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/login.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -156,9 +149,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -173,22 +163,25 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\movie-market\rest-app\src\test\java\com\moviemarket\rest" />
+      <recent name="D:\movie-market\rest-app\src\test\resources" />
+      <recent name="D:\movie-market\rest-app\src\main\webapp\WEB-INF\views\tiles" />
+      <recent name="D:\movie-market\rest-app\src\main\webapp\WEB-INF\views" />
+      <recent name="D:\movie-market\rest-app\src\main\java\com\moviemarket\rest" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\movie-market\rest-app\src\main\webapp\pages" />
       <recent name="D:\movie-market\src\main" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\movie-market\rest-app\src\main\webapp\WEB-INF\views\tiles" />
-      <recent name="D:\movie-market\rest-app\src\main\webapp\WEB-INF\views" />
-      <recent name="D:\movie-market\rest-app\src\main\webapp\WEB-INF" />
-      <recent name="D:\movie-market\rest-app\src\main\java\com\moviemarket\rest" />
-      <recent name="D:\movie-market\rest-app" />
     </key>
   </component>
   <component name="RunManager">
@@ -464,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501072266599</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed REST API, created MainController,  added activation coupon function, fixed JSP pages, created new pages, fixed services and DAO.">
+      <created>1501356313761</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1501356313761</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -512,7 +512,8 @@
     <MESSAGE value="Created DAO layer with test, updated model, added services layer with test, database properties fixed, created rest-app layer with test. Spring Security was injected into the app. Fixed bugs." />
     <MESSAGE value="Added representation JSP pages, updated model: created Client, updated DAO, service. Created new Controllers, new services classes." />
     <MESSAGE value="Removed MainController." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed MainController." />
+    <MESSAGE value="Fixed REST API, created MainController,  added activation coupon function, fixed JSP pages, created new pages, fixed services and DAO." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed REST API, created MainController,  added activation coupon function, fixed JSP pages, created new pages, fixed services and DAO." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -555,13 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
           <caret line="92" column="10" lean-forward="false" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/test/resources/log4j2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -609,7 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rest-app/src/test/java/com/moviemarket/rest/CategoryControllerMockTest.java" />
     <entry file="file://$PROJECT_DIR$/model/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -621,22 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding>
-            <element signature="e#453#454#0" expanded="false" />
-            <element signature="e#484#485#0" expanded="false" />
-            <element signature="e#533#534#0" expanded="false" />
-            <element signature="e#573#574#0" expanded="false" />
-            <element signature="e#608#609#0" expanded="false" />
-            <element signature="e#639#640#0" expanded="false" />
-            <element signature="e#687#688#0" expanded="false" />
-            <element signature="e#727#728#0" expanded="false" />
-            <element signature="e#762#763#0" expanded="false" />
-            <element signature="e#793#794#0" expanded="false" />
-            <element signature="e#841#842#0" expanded="false" />
-            <element signature="e#881#882#0" expanded="false" />
-            <element signature="e#1361#1362#0" expanded="false" />
-            <element signature="e#1441#1442#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -644,7 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -652,7 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,7 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -706,20 +680,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rest-app/src/test/resources/rest-mock-test.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/add.jsp" />
     <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -731,30 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6579">
           <caret line="387" column="10" lean-forward="false" selection-start-line="387" selection-start-column="10" selection-end-line="387" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/com/moviemarket/dao/CategoryMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/CategoryMapperTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/resources/CategoryMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -779,7 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="62" column="18" lean-forward="false" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -787,7 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="52" column="10" lean-forward="false" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -795,6 +730,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest-app/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/security-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/resources/CategoryMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/com/moviemarket/dao/CategoryMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/test/resources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/test/java/com/moviemarket/dao/CategoryMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -825,16 +807,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/src/test/java/com/moviemarket/service/CategoryServiceMockTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest-app/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -843,14 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/security-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -866,7 +832,23 @@
     <entry file="file://$PROJECT_DIR$/rest-app/src/main/webapp/WEB-INF/views/tiles/categories.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest-app/src/test/resources/rest-mock-test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest-app/src/test/java/com/moviemarket/rest/CategoryControllerMockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
