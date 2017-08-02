@@ -73,7 +73,7 @@ public class OrderControllerMockTest {
         replay(mockOrderService);
 
         mockMvc.perform(
-                get("/orders/1")
+                get("/orders/" + TEST_USERNAME)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -82,7 +82,7 @@ public class OrderControllerMockTest {
     @Test
     public void addOrderTest() throws Exception {
         LOGGER.debug("addOrderTest()");
-        expect(mockOrderService.addOrder(anyObject(Order.class), anyObject(String.class)));
+        expect(mockOrderService.addOrder(anyObject(Order.class), anyObject(String.class))).andReturn(1);
         replay(mockOrderService);
 
         mockMvc.perform(
@@ -95,7 +95,7 @@ public class OrderControllerMockTest {
     @Test
     public void deleteCategoryTest() throws Exception {
         LOGGER.debug("deleteCategoryTest()");
-        expect(mockOrderService.deleteOrder(anyObject(Integer.class)));
+        expect(mockOrderService.deleteOrder(anyObject(Integer.class))).andReturn(1);
         replay(mockOrderService);
 
         mockMvc.perform(
