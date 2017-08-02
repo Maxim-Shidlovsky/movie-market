@@ -31,4 +31,8 @@
             </tr>
         </table>
     </form>
+    
+    <br>
+    <br>
+    <center><a href="http://localhost:8080/registration?new">Registration</a></center>
 </div>
