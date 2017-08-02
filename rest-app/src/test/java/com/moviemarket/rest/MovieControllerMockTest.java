@@ -134,7 +134,7 @@ public class MovieControllerMockTest {
     @Test
     public void addMovieTest() throws Exception {
         LOGGER.debug("addMovieTest()");
-        expect(mockMovieService.addMovie(anyObject(Movie.class)));
+        expect(mockMovieService.addMovie(anyObject(Movie.class))).andReturn(1);
         replay(mockMovieService);
 
         String movieString = new ObjectMapper().writeValueAsString(
@@ -153,7 +153,7 @@ public class MovieControllerMockTest {
     @Test
     public void updateMovieTest() throws Exception {
         LOGGER.debug("updateMovieTest()");
-        expect(mockMovieService.updateMovie(anyObject(Movie.class)));
+        expect(mockMovieService.updateMovie(anyObject(Movie.class))).andReturn(1);
         replay(mockMovieService);
 
         String movieString = new ObjectMapper().writeValueAsString(
@@ -172,7 +172,7 @@ public class MovieControllerMockTest {
     @Test
     public void deleteMovieTest() throws Exception {
         LOGGER.debug("deleteMovieTest()");
-        expect(mockMovieService.deleteMovie(anyObject(Integer.class)));
+        expect(mockMovieService.deleteMovie(anyObject(Integer.class))).andReturn(1);
         replay(mockMovieService);
 
         mockMvc.perform(
