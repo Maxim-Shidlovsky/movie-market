@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:rest-mock-test.xml"})
+@ContextConfiguration(locations = {"classpath*:rest-mock-test.xml"})
 public class CategoryControllerMockTest {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -119,7 +119,7 @@ public class CategoryControllerMockTest {
     @Test
     public void addCategoryTest() throws Exception {
         LOGGER.debug("addCategoryTest()");
-        expect(mockCategoryService.addCategory(anyObject(Category.class)));
+        expect(mockCategoryService.addCategory(anyObject(Category.class))).andReturn(1);
         replay(mockCategoryService);
 
         String category = new ObjectMapper().writeValueAsString(
@@ -137,7 +137,7 @@ public class CategoryControllerMockTest {
     @Test
     public void updateCategoryTest() throws Exception {
         LOGGER.debug("updateCategoryTest()");
-        expect(mockCategoryService.updateCategory(anyObject(Category.class)));
+        expect(mockCategoryService.updateCategory(anyObject(Category.class))).andReturn(1);
         replay(mockCategoryService);
 
         String category = new ObjectMapper().writeValueAsString(
@@ -156,7 +156,7 @@ public class CategoryControllerMockTest {
     @Test
     public void deleteCategoryTest() throws Exception {
         LOGGER.debug("deleteCategoryTest()");
-        expect(mockCategoryService.deleteCategory(anyObject(Integer.class)));
+        expect(mockCategoryService.deleteCategory(anyObject(Integer.class))).andReturn(1);
         replay(mockCategoryService);
 
         mockMvc.perform(
