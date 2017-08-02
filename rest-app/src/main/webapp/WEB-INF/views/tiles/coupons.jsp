@@ -5,9 +5,10 @@
 
 
     <script type="text/javascript">
-        var COUPONS_URL = "http://localhost:8080/coupons";
-        var COUPON_URL = "http://localhost:8080/coupons/coupon";
-        var COUPON_CODE_URL = "http://localhost:8080/coupons/coupon/code/";
+        var HOST = "http://localhost:8080";
+        var COUPONS_URL = HOST + "/coupons";
+        var COUPON_URL = HOST + "/coupons/coupon";
+        var COUPON_CODE_URL = HOST + "/coupons/coupon/code/";
 
 
         $.dto = null;
@@ -72,13 +73,19 @@
                });
            }
 
+           function formatDate(inputStr) {
+               		var timestamp = parseInt(inputStr, 10);
+               		var date = new Date(timestamp);
+               		return date.toISOString().substr(0, 10);
+           }
+
            function drawRow(coupon) {
                var row = $("<tr />")
                $("#couponsTable").append(row);
                row.append($("<td hidden>" + coupon.couponId + '</td>'));
                row.append($("<td>" + coupon.code + "</td>"));
                row.append($("<td>" + coupon.discount + "</td>"));
-               row.append($("<td>" + coupon.receivingDate + "</td>"));
+               row.append($("<td>" + formatDate(coupon.receivingDate) + "</td>"));
                row.append($("<td>" + '<a href="#" data-id="' + coupon.couponId + '">Edit</a></td>'));
                row.append($("<td>" + '<a href="#" data-id="' + coupon.couponId + '">Delete</a></td>'));
            }
