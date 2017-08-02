@@ -117,7 +117,7 @@ public class CouponControllerMockTest {
     @Test
     public void addCouponTest() throws Exception {
         LOGGER.debug("addCouponTest()");
-        expect(mockCouponService.addCoupon(anyObject(Coupon.class)));
+        expect(mockCouponService.addCoupon(anyObject(Coupon.class))).andReturn(1);
         replay(mockCouponService);
 
         String coupon = new ObjectMapper().writeValueAsString(
@@ -135,7 +135,7 @@ public class CouponControllerMockTest {
     @Test
     public void updateCouponTest() throws Exception {
         LOGGER.debug("updateCouponTest()");
-        expect(mockCouponService.updateCoupon(anyObject(Coupon.class)));
+        expect(mockCouponService.updateCoupon(anyObject(Coupon.class))).andReturn(1);
         replay(mockCouponService);
 
         String coupon = new ObjectMapper().writeValueAsString(
@@ -154,7 +154,7 @@ public class CouponControllerMockTest {
     @Test
     public void deleteCouponTest() throws Exception {
         LOGGER.debug("deleteCouponTest()");
-        expect(mockCouponService.deleteCoupon(anyObject(Integer.class)));
+        expect(mockCouponService.deleteCoupon(anyObject(Integer.class))).andReturn(1);
         replay(mockCouponService);
 
         mockMvc.perform(
