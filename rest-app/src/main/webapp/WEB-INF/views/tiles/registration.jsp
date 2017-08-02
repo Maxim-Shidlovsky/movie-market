@@ -21,4 +21,8 @@
             </table>
         </fieldset>
     </sf:form>
+    
+    <br>
+    <br>
+    <center><a href="http://localhost:8080/login">Go back to the login page</a></center>
 </div>
