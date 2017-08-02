@@ -6,11 +6,12 @@
 
 
 <script type="text/javascript">
-   var MOVIES_URL = "http://localhost:8080/movies";
-   var MOVIE_URL = "http://localhost:8080/movies/movie";
-   var MOVIE_TITLE_URL = "http://localhost:8080/movies/movie/title/";
-   var MOVIES_CATEGORY_URL = "http://localhost:8080/movies/category/";
-   var ORDER_URL = "http://localhost:8080/orders/";
+   var HOST = "http://localhost:8080"
+   var MOVIES_URL = HOST + "/movies";
+   var MOVIE_URL = HOST + "/movies/movie";
+   var MOVIE_TITLE_URL = HOST + "/movies/movie/title/";
+   var MOVIES_CATEGORY_URL = HOST + "/movies/category/";
+   var ORDER_URL = HOST + "/orders/";
 
    $.dto = null;
 
@@ -96,12 +97,18 @@
                });
            }
 
+           function formatDate(inputStr) {
+               		var timestamp = parseInt(inputStr, 10);
+               		var date = new Date(timestamp);
+               		return date.toISOString().substr(0, 10);
+           }
+
            function drawRow(movie) {
                var row = $("<tr />")
                $("#moviesTable").append(row);
                row.append($("<td hidden>" + movie.movieId + '</td>'));
                row.append($("<td>" + movie.title + "</td>"));
-               row.append($("<td>" + movie.releaseDate + "</td>"));
+               row.append($("<td>" + formatDate(movie.releaseDate) + "</td>"));
                row.append($("<td hidden>" + movie.categoryId + "</td>"));
                row.append($("<td>" + movie.categoryTitle + "</td>"));
                row.append($("<td>" + movie.rating + "/10</td>"));
