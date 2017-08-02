@@ -6,9 +6,10 @@
 
 
     <script type="text/javascript">
-           var ORDERS_URL = "http://localhost:8080/orders/";
-           var ORDER_URL = "http://localhost:8080/orders/order/";
-           var COUPON_URL = "http://localhost:8080/coupons/coupon/";
+           var HOST = "http://localhost:8080"
+           var ORDERS_URL = HOST + "/orders/";
+           var ORDER_URL = HOST + "/orders/order/";
+           var COUPON_URL = HOST + "/coupons/coupon/";
 
 
               $.dto = null;
@@ -45,6 +46,12 @@
                });
            }
 
+           function formatDate(inputStr) {
+               		var timestamp = parseInt(inputStr, 10);
+               		var date = new Date(timestamp);
+               		return date.toISOString().substr(0, 10);
+           }
+
            function drawRow(order) {
                var row = $("<tr />")
                $("#ordersTable").append(row);
@@ -54,7 +61,7 @@
                row.append($("<td hidden>" + order.categoryId + "</td>"));
                row.append($("<td>" + order.categoryTitle + "</td>"));
                row.append($("<td>" + order.rating + "/10</td>"));
-               row.append($("<td>" + order.orderDate + "</td>"));
+               row.append($("<td>" + formatDate(order.orderDate) + "</td>"));
                row.append($("<td>" + order.price + "</td>"));
                row.append($("<td>" + '<a href="#" data-id="' + order.orderId + '">Delete</a></td>'));
                row.append($("<td></td>"));
