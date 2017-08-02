@@ -7,23 +7,28 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.moviemarket.rest"/>
 
-
-    <bean id="categoryService" class="org.easymock.EasyMock" factory-method="createMock">
+    <bean id="mockCategoryService" class="org.easymock.EasyMock" factory-method="createMock">
         <constructor-arg value="com.moviemarket.service.CategoryService"/>
     </bean>
 
-    <bean id="movieService" class="org.easymock.EasyMock" factory-method="createMock">
+    <bean id="mockMovieService" class="org.easymock.EasyMock" factory-method="createMock">
         <constructor-arg value="com.moviemarket.service.MovieService"/>
     </bean>
 
-    <bean id="couponService" class="org.easymock.EasyMock" factory-method="createMock">
+    <bean id="mockCouponService" class="org.easymock.EasyMock" factory-method="createMock">
         <constructor-arg value="com.moviemarket.service.CouponService"/>
     </bean>
 
-    <bean id="orderService" class="org.easymock.EasyMock" factory-method="createMock">
+    <bean id="mockOrderService" class="org.easymock.EasyMock" factory-method="createMock">
         <constructor-arg value="com.moviemarket.service.OrderService"/>
     </bean>
+       
+    <bean id="clientService" class="org.easymock.EasyMock" factory-method="createMock">
+        <constructor-arg value="com.moviemarket.service.OrderService"/>
+    </bean>
+ 
+    
+    <context:component-scan base-package="com.moviemarket.rest"/>
 
 </beans>
